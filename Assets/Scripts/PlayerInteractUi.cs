@@ -9,11 +9,14 @@ public class PlayerInteractUi : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interactTextMeshProUGUI;
     public TMP_FontAsset tmFont;
     public TMP_FontAsset infectFont;
-
+    public NPCInteractable npcObject;
+    private void Start()
+    { 
+    }
 
     private void Update()
     {
-        if (playerInteract.GetInteractableObject() != null) 
+        if (playerInteract.GetInteractableObject() != null && npcObject.minigameOn == false) 
         {
             Show(playerInteract.GetInteractableObject());
         }
