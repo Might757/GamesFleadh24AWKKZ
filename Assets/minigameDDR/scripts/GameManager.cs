@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject Victory;
+
+    public GameObject Failure;
+    public GameObject Notes;
+    public int NotesMissed;
     public AudioSource Music;
 
     public bool startMusic;
@@ -53,6 +58,19 @@ public class GameManager : MonoBehaviour
                 Music.Play();
             }
         }
+        else if(NotesMissed >= 10)
+        {
+            Notes.SetActive(false);
+            Failure.SetActive(true);
+            Music.Stop();
+        }
+        if(currentScore >= 10000)
+        {
+            Notes.SetActive(false);
+            Victory.SetActive(true);
+            Music.Stop();
+        }
+
     }
 
 

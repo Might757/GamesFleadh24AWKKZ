@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
+
+    
     public bool canBePressed;
 
     public KeyCode key;
+
 
     public GameObject hitEffect, greatEffect, perfectEffect, missEffect;
 
@@ -56,7 +59,13 @@ public class Note : MonoBehaviour
 
             GameManager.instance.NoteMissed();
             Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+            GameObject Missed = GameObject.Find("GameManager");
+            GameManager manager = Missed.GetComponent<GameManager>();
+            int NotesMissed = manager.NotesMissed;
+            manager.NotesMissed ++;
+            Debug.Log("Notes missed: " + NotesMissed);
         }
+        
     }
     // Start is called before the first frame update
     void Start()
