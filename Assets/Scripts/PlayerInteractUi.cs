@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
+
 public class PlayerInteractUi : MonoBehaviour
 {
     [SerializeField] private GameObject containerGameObject;
     [SerializeField] private PlayerInteract playerInteract;
     [SerializeField] private TextMeshProUGUI interactTextMeshProUGUI;
+    [SerializeField] private GameObject volume;
     public TMP_FontAsset tmFont;
     public TMP_FontAsset infectFont;
     public NPCInteractable npcObject;
@@ -27,15 +30,18 @@ public class PlayerInteractUi : MonoBehaviour
     }
     private void Show(IInteractable interactable)
     {
+        volume.SetActive(true);
+        volume.GetComponent<Animator>().Play("bloodThirstAnimation");
         containerGameObject.SetActive(true);
         interactTextMeshProUGUI.text = interactable.GetInteractText();
-        if (interactable.GetInteractText().Equals("Open/Close Door")) 
+        if (interactable.GetInteractText().Equals("Interact")) 
         {
-            interactTextMeshProUGUI.font = tmFont;
+            interactTextMeshProUGUI.fontSize = 86;
         } 
         else 
         {
             interactTextMeshProUGUI.font = infectFont;
+            interactTextMeshProUGUI.fontSize = 96;
         }
     }
 

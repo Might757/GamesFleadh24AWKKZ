@@ -34,6 +34,6 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "Open/Close Door";
+        return "Interact";
     }
 }

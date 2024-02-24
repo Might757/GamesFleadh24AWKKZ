@@ -10,43 +10,64 @@ public class Note : MonoBehaviour
 
     public GameObject hitEffect, greatEffect, perfectEffect, missEffect;
 
+
+    void Start()
+    {
+    }
     void Update()
     {
-        if(Input.GetKeyDown(key))
+        if (gameObject != null) 
         {
-            if(canBePressed)
+            if (Input.GetKeyDown(key))
             {
-                gameObject.SetActive(false);
+                if (canBePressed)
+                {
+                    gameObject.SetActive(false);
 
-                //GameManager.instance.NoteHit();
+                    //GameManager.instance.NoteHit();
 
-                if(Mathf.Abs(transform.position.y) > 0.25)
-                {
-                    GameManager.instance.NormalHit();
-                    Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
-                    Debug.Log("Good!");
-                }
-                else if(Mathf.Abs(transform.position.y) > 0.15)
-                {
-                    GameManager.instance.GoodHit();
-                    Instantiate(greatEffect, transform.position, greatEffect.transform.rotation);
-                    Debug.Log("Great!");
-                }
-                else
-                {
-                    GameManager.instance.PerfectHit();
-                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
-                    Debug.Log("Perfect");
+                    if (Mathf.Abs(transform.position.y) > 0.25)
+                    {
+                        GameManager.instance.NormalHit();
+                        Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
+                        Debug.Log("Good!");
+                    }
+                    else if (Mathf.Abs(transform.position.y) > 0.15)
+                    {
+                        GameManager.instance.GoodHit();
+                        Instantiate(greatEffect, transform.position, greatEffect.transform.rotation);
+                        Debug.Log("Great!");
+                    }
+                    else
+                    {
+                        GameManager.instance.PerfectHit();
+                        Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+                        Debug.Log("Perfect");
+                    }
                 }
             }
         }
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Activator")
+        if (other.tag == "Border")
+        {
+
+            Debug.Log("TOUCHED THIS BORDER");
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log(other.tag);
+        }
+
+        if (other.tag == "Activator")
         {
             canBePressed = true;
         }
+
+
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -58,12 +79,6 @@ public class Note : MonoBehaviour
             Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    
+
 }

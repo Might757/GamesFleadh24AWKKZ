@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class NPCInteractable : MonoBehaviour, IInteractable
@@ -9,17 +10,24 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private string interactText;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject containerUI;
-
+    [SerializeField] private GameObject ddr;
     [SerializeField] private MeshRenderer currentSkin;
     [SerializeField] private Material infectedSkin;
     [SerializeField] private bool isStrong = false;
 
-
+    private Vector3 ddrPosition;
     public bool isInfected = false;
     public bool minigameOn = false;
-   public void Interact()
+
+    void Start()
+    {
+        ddrPosition = new Vector3(gameObject.transform.position.x, 1000, gameObject.transform.position.z);
+    }
+
+    public void Interact()
     {
         npcInfect();
+
     }
 
     public string GetInteractText() 
@@ -40,13 +48,13 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         {
             minigameOn = true;
             //play minigame, if player wins minigame, adds multiplier, if not, multiplier resets to 0.
+            Instantiate(ddr, ddrPosition, transform.rotation);
             player.SetActive(false);
-            SceneManager.LoadScene("backup", LoadSceneMode.Additive);
-
           // new script to be done for the minigame and connect it with NPCInteracble class.
         }
         else if (isInfected == true)  
         {
+
             Debug.Log("Player is already infected! Your currently infected " + infectedSO.Score + "people!");
         }
 

@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+
+
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -43,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.levelPassed == true)
+        {
+            gameObject.SetActive(true);
+        }
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 

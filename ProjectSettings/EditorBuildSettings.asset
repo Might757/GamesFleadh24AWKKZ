@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Level.unity
     guid: 1c7155f082bf0a44ab7e736980835abd
   - enabled: 1
-    path: Assets/Scenes/backup.unity
+    path: Assets/Scenes/ddrminigame.unity
     guid: 1766b2c30ea0c9c41bf005f3f88eee31
   m_configObjects: {}

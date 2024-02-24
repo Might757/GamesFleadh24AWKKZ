@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //shouldnt make every variable public
     public AudioSource Music;
 
     public bool startMusic;
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
     public BeatScroller BS;
 
     public static GameManager instance;
+    [SerializeField] private GameObject success;
+    [SerializeField] private GameObject unsuccess;
+    [SerializeField] private GameObject blackBg;
+    [SerializeField] private infectedSO infectedSO;
+    private GameObject player;
+    private NPCInteractable npc;
 
     public int currentScore;
 
@@ -21,10 +28,10 @@ public class GameManager : MonoBehaviour
 
     public int scorePerGoodNote = 150;
 
-    public int scorePerPerfectNote =200;
+    public int scorePerPerfectNote = 200;
 
     public Text scoreText;
-    
+
     public Text multiText;
 
     public int currentMultiplier;
@@ -32,20 +39,40 @@ public class GameManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierTresholds;
 
+    public float totalNotes;
+    public float normalHits;
+    public float goodHits;
+    public float perfectHits;
+    public float missedHits;
+
+
+    public static bool levelPassed;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(player);
+    }
     // Start is called before the first frame update
     void Start()
     {
+
+
+        npc = FindAnyObjectByType<NPCInteractable>();
+        normalHits = goodHits = perfectHits = missedHits = 0;
+        levelPassed = false;
+        totalNotes = FindObjectsOfType<Note>().Length;
         instance = this;
         scoreText.text = "Score: 0";
-        currentMultiplier =1;
+        currentMultiplier = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!startMusic)
+        if (!startMusic)
         {
-            if(Input.anyKeyDown)
+            if (Input.anyKeyDown)
             {
                 startMusic = true;
                 BS.hasStarted = true;
@@ -53,41 +80,69 @@ public class GameManager : MonoBehaviour
                 Music.Play();
             }
         }
+        if (totalNotes == (normalHits + goodHits + perfectHits + missedHits) && npc.minigameOn)
+        {
+            blackBg.SetActive(true);
+            if (currentScore >= 1000)
+            {
+                levelPassed = true;
+                success.SetActive(true);
+                npc.isInfected = true;
+                infectedSO.ScoreMultiplier += 0.1f;
+                infectedSO.Score = infectedSO.Score + (1 * infectedSO.ScoreMultiplier);
+                player.SetActive(true);
+
+            }
+            else
+            {
+                levelPassed = false;
+                unsuccess.SetActive(true);
+                npc.isInfected = false;
+                infectedSO.ScoreMultiplier = 1f; // reset infect multiplier
+                player.SetActive(true);
+            }
+            npc.minigameOn = false;
+        }
+
     }
 
 
     public void NoteHit()
     {
         Debug.Log("Hit on time!");
-        if(currentMultiplier - 1 < multiplierTresholds.Length)
+        if (currentMultiplier - 1 < multiplierTresholds.Length)
         {
-        multiplierTracker++;
-        if(multiplierTresholds[currentMultiplier - 1] <= multiplierTracker)
-        {
-            multiplierTracker = 0;
-            currentMultiplier++;
-            multiText.text = "Multiplier: x"+currentMultiplier;
-        }
+            multiplierTracker++;
+            if (multiplierTresholds[currentMultiplier - 1] <= multiplierTracker)
+            {
+                multiplierTracker = 0;
+                currentMultiplier++;
+                multiText.text = "Multiplier: x" + currentMultiplier;
+            }
         }
         /*currentScore += (scorePerNote*currentMultiplier);*/
-        scoreText.text = "Score: "+currentScore;
+        scoreText.text = "Score: " + currentScore;
     }
 
     public void NormalHit()
     {
-        currentScore += (scorePerNormalHit*currentMultiplier);
+        currentScore += (scorePerNormalHit * currentMultiplier);
         NoteHit();
+        normalHits++;
     }
     public void GoodHit()
     {
         currentScore += (scorePerGoodNote*currentMultiplier);
         NoteHit();
+        goodHits++;
     }
 
     public void PerfectHit()
     {
         currentScore += (scorePerPerfectNote*currentMultiplier);
         NoteHit();
+
+        perfectHits++;
     }
     public void NoteMissed()
     {
@@ -97,5 +152,7 @@ public class GameManager : MonoBehaviour
         multiplierTracker = 0;
         scoreText.text = "Score: "+currentScore;
         multiText.text = "Multiplier: x"+currentMultiplier;
+
+        missedHits++;
     }
 }
