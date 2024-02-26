@@ -11,17 +11,20 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject containerUI;
     [SerializeField] private GameObject ddr;
+    //[SerializeField] private GameObject maze;
+    [SerializeField] private GameObject angryVirus;
     [SerializeField] private MeshRenderer currentSkin;
     [SerializeField] private Material infectedSkin;
     [SerializeField] private bool isStrong = false;
 
-    private Vector3 ddrPosition;
+    private int randomInt;
+    private Vector3 minigamePosition;
     public bool isInfected = false;
     public bool minigameOn = false;
 
     void Start()
     {
-        ddrPosition = new Vector3(gameObject.transform.position.x, 1000, gameObject.transform.position.z);
+        minigamePosition = new Vector3(gameObject.transform.position.x, 1000, gameObject.transform.position.z);
     }
 
     public void Interact()
@@ -46,9 +49,26 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         }
         else if (isInfected == false && isStrong == true && minigameOn == false)
         {
+            randomInt = 1;
             minigameOn = true;
+            Debug.Log(randomInt);
             //play minigame, if player wins minigame, adds multiplier, if not, multiplier resets to 0.
-            Instantiate(ddr, ddrPosition, transform.rotation);
+            switch (randomInt)
+            {
+                case 1:
+                    Debug.Log(ddr.transform.position);
+                    Instantiate(ddr, minigamePosition, transform.rotation);
+                    Debug.Log(ddr.transform.position);
+                    break;
+                case 2:
+                    //Instantiate(maze, minigamePosition, transform.rotation);
+                    Debug.Log("maze instantiated");
+                    break;
+                case 3:
+                    Instantiate(angryVirus, minigamePosition, transform.rotation);
+                    break;
+            }
+
             player.SetActive(false);
           // new script to be done for the minigame and connect it with NPCInteracble class.
         }
