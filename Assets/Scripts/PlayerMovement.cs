@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField ]private Animator anim;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -99,6 +100,15 @@ public class PlayerMovement : MonoBehaviour
         else if (!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+        if (moveDirection.magnitude != 0)
+        {
+            //Animate player
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
         }
     }
 

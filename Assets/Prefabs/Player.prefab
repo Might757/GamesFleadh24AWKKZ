@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5785932138896066655}
   - component: {fileID: 4362070300146142709}
   - component: {fileID: 3111570872257464434}
-  - component: {fileID: 241389932417721062}
   - component: {fileID: 704085845660220234}
   - component: {fileID: 7986499348351462393}
   m_Layer: 0
@@ -101,27 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeXZAxis: 1
---- !u!65 &241389932417721062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627057657698696044}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.64425325, y: 1.9736136, z: 0.01}
-  m_Center: {x: 0.021620989, y: -0.31120962, z: 0}
 --- !u!95 &704085845660220234
 Animator:
   serializedVersion: 5
@@ -294,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922a1c1657f6f0747becf4a64c5d62de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 704085845660220234}
   moveSpeed: 7
   groundDrag: 4
   jumpForce: 4
