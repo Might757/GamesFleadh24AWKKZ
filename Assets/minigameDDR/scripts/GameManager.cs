@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject blackBg;
     [SerializeField] private infectedSO infectedSO;
     private GameObject player;
+    [SerializeField] private GameObject nearestNpc;
+    [SerializeField] private GameObject[] allNpcs;
     private NPCInteractable npc;
+
+    float distance;
+    float nearestDistance = 10000;
 
     public int currentScore;
 
@@ -45,26 +50,36 @@ public class GameManager : MonoBehaviour
     public float perfectHits;
     public float missedHits;
 
+    //public GameObject SplashScreen;
 
     public static bool levelPassed;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(player);
     }
     // Start is called before the first frame update
     void Start()
     {
-
-
-        npc = FindAnyObjectByType<NPCInteractable>();
+        allNpcs = GameObject.FindGameObjectsWithTag("Person");
         normalHits = goodHits = perfectHits = missedHits = 0;
         levelPassed = false;
         totalNotes = FindObjectsOfType<Note>().Length;
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+
+        for(int  i = 0; i < allNpcs.Length; i++)
+        {
+            distance = Vector3.Distance(player.transform.position, allNpcs[i].transform.position);
+
+            if (distance < nearestDistance)
+            {
+                nearestNpc = allNpcs[i];
+                nearestDistance = distance;
+            }
+            npc = nearestNpc.GetComponent<NPCInteractable>();
+        }
     }
 
     // Update is called once per frame
@@ -76,7 +91,7 @@ public class GameManager : MonoBehaviour
             {
                 startMusic = true;
                 BS.hasStarted = true;
-
+                //SplashScreen.SetActive(false);
                 Music.Play();
             }
         }

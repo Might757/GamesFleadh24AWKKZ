@@ -26,13 +26,13 @@ public class Note : MonoBehaviour
 
                     //GameManager.instance.NoteHit();
 
-                    if (Mathf.Abs(transform.position.y) > 0.25)
+                    if (Mathf.Abs(transform.position.y) > 1)
                     {
                         GameManager.instance.NormalHit();
                         Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                         Debug.Log("Good!");
                     }
-                    else if (Mathf.Abs(transform.position.y) > 0.15)
+                    else if (Mathf.Abs(transform.position.y) > 0.8)
                     {
                         GameManager.instance.GoodHit();
                         Instantiate(greatEffect, transform.position, greatEffect.transform.rotation);

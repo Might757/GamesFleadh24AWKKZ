@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Activator
   - Border
+  - virus
+  - Score
   layers:
   - Default
   - TransparentFX

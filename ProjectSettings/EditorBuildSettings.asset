@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 4e31d108b98095b42bad490fb2e68c83
   - enabled: 1
+    path: Assets/stuff by kacper/cutscene/Cutscene.unity
+    guid: 2ae6b4e9d9245334c93475e40140585a
+  - enabled: 1
     path: Assets/Scenes/Main Level.unity
     guid: 1c7155f082bf0a44ab7e736980835abd
   m_configObjects: {}

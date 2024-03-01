@@ -19,6 +19,8 @@ public class NPCMovement : MonoBehaviour
     public float speed = 3;
     [SerializeField] private Rigidbody rb;
     private Animator anim;
+    public WayPointCD wayPointCD;
+    private Vector3 delta;
     // Update is called once per frame
 
      void Start()
@@ -28,7 +30,8 @@ public class NPCMovement : MonoBehaviour
     void Update()
     {
         // Process the current instruction in our control data array
-        WayPointCD wayPointCD = wpPattern[patternIndex];
+
+        wayPointCD = wpPattern[patternIndex];
 
         Vector3 wppos = wayPointCD.waypoint.transform.position;
 
@@ -51,9 +54,7 @@ public class NPCMovement : MonoBehaviour
         // then increase the pattern index
         if (distance <= speedDelta)
         {
-            // 
-            // Wait for 2 seconds
-            //
+            StartCoroutine(waitToWalk());
 
             patternIndex++;
             // Reset the patternIndex if we are at the end of the instruction array
@@ -79,14 +80,16 @@ public class NPCMovement : MonoBehaviour
         // Draw this vector at the position of the waypoint
         Debug.DrawRay(transform.position, normalizedRangeToClose, Color.magenta);
 
-        Vector3 delta = speedDelta * normalizedRangeToClose;
-        Debug.Log(normalizedRangeToClose);
+        delta = speedDelta * normalizedRangeToClose;
 
         //delta.y = 0.0f;
 
-        transform.Translate(delta);
+        transform.Translate(delta, Space.World);
+        
+
+
         // ANIMATE NPC
-        transform.rotation = Quaternion.LookRotation(normalizedRangeToClose);
+
 
         if (delta.magnitude > 0)
         {
@@ -99,6 +102,9 @@ public class NPCMovement : MonoBehaviour
 
 
 
-
+        IEnumerator waitToWalk()
+        {
+            yield return new WaitForSeconds(wayPointCD.time);
+        }
     }
 }

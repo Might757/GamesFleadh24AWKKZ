@@ -9,6 +9,7 @@ public class CannonController : MonoBehaviour
     public GameObject projectile;
     public GameObject projectileSpawnPoint;
     public GameObject pivotPoint;
+    [SerializeField] private GameObject anglePivot;
     
 
     public float angle;
@@ -17,17 +18,29 @@ public class CannonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Capture MOuse Position
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - pivotPoint.transform.position;
+        //Capture Mouse Position
+        Vector3 screenPos = Input.mousePosition;
+        screenPos.z = Camera.main.nearClipPlane + 1;
+        //screenPos.y += 1000;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(screenPos) - pivotPoint.transform.position;
 
-        //Calculate thr angle based on the mouse position
-        angle = Mathf.Atan2(mousePos.x, mousePos.y) * Mathf.Rad2Deg;
+
+        // try
+
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+
+        //Calculate the angle based on the mouse position
+        angle = Vector3.Angle(pivotPoint.transform.position, mousePos);
+        Debug.DrawRay(pivotPoint.transform.position, mousePos, Color.cyan);
+        Debug.Log(angle);
+
 
         //update the platform rotation
         if (angle > -98 && angle < 98) 
