@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class ScoreScript : MonoBehaviour
 {
     public TextMeshProUGUI MyScoreText;
-    public int ScoreNum;
+    public static int ScoreNum;
+    public static bool mazeRunning = true;
+    public CountdownTimer mazeTime;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,10 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (ScoreNum == 6 || CountdownTimer.currentTime <= 0f)
+        {
+            mazeRunning = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D coin)

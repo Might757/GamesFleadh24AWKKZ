@@ -34,7 +34,7 @@ public class ThirdPersonCam : MonoBehaviour
 
         // rotate player object
 
-        float horizontalInput = Input.GetAxis("Horizontal");
+            float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
             Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 

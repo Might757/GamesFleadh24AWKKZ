@@ -81,9 +81,10 @@ MonoBehaviour:
   infectedSO: {fileID: 11400000, guid: eba31ffbf0e7294488144486792f73c7, type: 2}
   interactText: Infect
   player: {fileID: 0}
-  containerUI: {fileID: 0}
+  playerInteractUI: {fileID: 241179734645180455, guid: 505e61981f21218438f5c74a067f8015,
+    type: 3}
   infectedBubble: {fileID: 5003069207529807919}
-  ddr: {fileID: 4432009540119157786, guid: b6206b68271e5094d9ea4365d2019293, type: 3}
+  ddr: {fileID: 3009106893861576707, guid: 72a1864a8481d8b4d936d1217f54dac6, type: 3}
   maze: {fileID: 472396184983610016, guid: 6cc3b4211c821b3428e159939c1d23b2, type: 3}
   angryVirus: {fileID: 4076581005525886811, guid: fa02a10c14868c640818766eaa0f91cd,
     type: 3}

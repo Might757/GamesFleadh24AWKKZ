@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3436940025476486923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -249,6 +249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MinigameInfectedSuccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353248640094617420, guid: 19ece79b5e1d1234f8113b3dd4063926,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5817553161175206252, guid: 19ece79b5e1d1234f8113b3dd4063926,
         type: 3}

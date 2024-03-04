@@ -14,7 +14,7 @@ public class Timewait : MonoBehaviour
     
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("space key was pressed");
             gameObject.SetActive(false);

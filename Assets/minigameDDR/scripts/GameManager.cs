@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject unsuccess;
     [SerializeField] private GameObject blackBg;
     [SerializeField] private infectedSO infectedSO;
+    [SerializeField] private GameObject SplashScreen;
+    private GameObject playerInteractUI;// interact text (infect)
+    private GameObject infectedScoreUI; // score of the main game
     private GameObject player;
     [SerializeField] private GameObject nearestNpc;
     [SerializeField] private GameObject[] allNpcs;
@@ -56,11 +59,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        playerInteractUI = GameObject.FindGameObjectWithTag("InteractUI");
+        infectedScoreUI = GameObject.FindGameObjectWithTag("Score");
+        infectedScoreUI.SetActive(false);
+        playerInteractUI.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
     {
+
         allNpcs = GameObject.FindGameObjectsWithTag("Person");
         normalHits = goodHits = perfectHits = missedHits = 0;
         levelPassed = false;
@@ -91,7 +100,7 @@ public class GameManager : MonoBehaviour
             {
                 startMusic = true;
                 BS.hasStarted = true;
-                //SplashScreen.SetActive(false);
+                SplashScreen.SetActive(false);
                 Music.Play();
             }
         }
@@ -105,8 +114,11 @@ public class GameManager : MonoBehaviour
                 npc.isInfected = true;
                 infectedSO.ScoreMultiplier += 0.1f;
                 infectedSO.Score = infectedSO.Score + (1 * infectedSO.ScoreMultiplier);
+                // Set player and UI to true
                 player.SetActive(true);
-
+                infectedScoreUI.SetActive(true);
+                playerInteractUI.SetActive(true);
+                npc.minigameOn = false;
             }
             else
             {
@@ -114,9 +126,12 @@ public class GameManager : MonoBehaviour
                 unsuccess.SetActive(true);
                 npc.isInfected = false;
                 infectedSO.ScoreMultiplier = 1f; // reset infect multiplier
+                // Set player and UI to true
                 player.SetActive(true);
+                infectedScoreUI.SetActive(true);
+                playerInteractUI.SetActive(true);
+                npc.minigameOn = false;
             }
-            npc.minigameOn = false;
         }
 
     }

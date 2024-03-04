@@ -9,9 +9,9 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private infectedSO infectedSO;
     [SerializeField] private string interactText;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject containerUI;
+    [SerializeField] private GameObject playerInteractUI;
     [SerializeField] private GameObject infectedBubble;
-    private GameObject infectedScoreUI;
+    private GameObject infectedScoreUI; // score of the main game
     [SerializeField] private GameObject ddr;
     [SerializeField] private GameObject maze;
     [SerializeField] private GameObject angryVirus;
@@ -26,7 +26,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     void Start()
     {
         infectedScoreUI = GameObject.FindGameObjectWithTag("Score");
-        minigamePosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.z , gameObject.transform.position.z); // 1000 on y
+        minigamePosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.z , gameObject.transform.localPosition.z); // 1000 on y
     }
 
     public void Interact()
@@ -54,7 +54,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         }
         else if (isInfected == false && isStrong == true && minigameOn == false)
         {
-            randomInt = 2; //Random.Range(1,2);
+            randomInt = 2;//Random.Range(1,2);
             minigameOn = true;
             Debug.Log(randomInt);
             //play minigame, if player wins minigame, adds multiplier, if not, multiplier resets to 0.
@@ -65,16 +65,13 @@ public class NPCInteractable : MonoBehaviour, IInteractable
                     break;
                 case 2:
                     //Instantiate(maze, minigamePosition, transform.rotation);
-                    Instantiate(maze, minigamePosition, transform.rotation);
+                    Instantiate(maze, new Vector3(maze.transform.localPosition.x, maze.transform.localPosition.y, maze.transform.localPosition.z), maze.transform.localRotation);
                     break;
                 case 3:
 
                     Instantiate(angryVirus, minigamePosition, transform.rotation);
                     break;
             }
-
-            player.SetActive(false);
-            infectedScoreUI.SetActive(false);
         }
         else if (isInfected == true)  
         {

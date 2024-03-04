@@ -3488,8 +3488,10 @@ MonoBehaviour:
   unsuccess: {fileID: 7751848823993893297}
   blackBg: {fileID: 5647823049779963431}
   infectedSO: {fileID: 11400000, guid: eba31ffbf0e7294488144486792f73c7, type: 2}
-  infectedScoreUI: {fileID: 5803183264311550220, guid: c98077762b04c244fa59b02775ed76fd,
+  playerInteractUI: {fileID: 6319488437760026893, guid: ce8fd1470d1b1294eb1e58a0249b00c8,
     type: 3}
+  nearestNpc: {fileID: 0}
+  allNpcs: []
   currentScore: 0
   scorePerNote: 100
   scorePerNormalHit: 100

@@ -8,6 +8,10 @@ TagManager:
   - Border
   - virus
   - Score
+  - Coin
+  - Person
+  - PlayerMaze
+  - InteractUI
   layers:
   - Default
   - TransparentFX

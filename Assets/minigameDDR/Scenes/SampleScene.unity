@@ -207,12 +207,12 @@ PrefabInstance:
     - target: {fileID: 842159103845308223, guid: 6cc3b4211c821b3428e159939c1d23b2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2632823
+      value: -1.9483299
       objectReference: {fileID: 0}
     - target: {fileID: 842159103845308223, guid: 6cc3b4211c821b3428e159939c1d23b2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3887262
+      value: 2.9215565
       objectReference: {fileID: 0}
     - target: {fileID: 842159103845308223, guid: 6cc3b4211c821b3428e159939c1d23b2,
         type: 3}
@@ -368,6 +368,41 @@ PrefabInstance:
         type: 3}
       propertyPath: orthographic size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075117863250947744, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9215565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895107542059079042, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.2833278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895107542059079042, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895107542059079042, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025263928017390594, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025263928017390594, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025263928017390594, guid: 6cc3b4211c821b3428e159939c1d23b2,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
