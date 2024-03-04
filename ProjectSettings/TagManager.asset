@@ -12,6 +12,9 @@ TagManager:
   - Person
   - PlayerMaze
   - InteractUI
+  - block
+  - borderAngryVirus
+  - ambient
   layers:
   - Default
   - TransparentFX

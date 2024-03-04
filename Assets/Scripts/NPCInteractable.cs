@@ -16,7 +16,10 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject maze;
     [SerializeField] private GameObject angryVirus;
     [SerializeField] private Material infectedSkin;
+    [SerializeField] private AudioClip[] infectedSoundClips;
+    [SerializeField] private AudioSource bgAmbient;
     [SerializeField] private bool isStrong = false;
+    private bool isInfectedSound = false;
 
     private int randomInt;
     private Vector3 minigamePosition;
@@ -26,7 +29,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     void Start()
     {
         infectedScoreUI = GameObject.FindGameObjectWithTag("Score");
-        minigamePosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.z , gameObject.transform.localPosition.z); // 1000 on y
+        minigamePosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + 1000, gameObject.transform.localPosition.z); // 1000 on y
     }
 
     public void Interact()
@@ -54,7 +57,8 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         }
         else if (isInfected == false && isStrong == true && minigameOn == false)
         {
-            randomInt = 2;//Random.Range(1,2);
+            bgAmbient.Pause();
+            randomInt =  1;//Random.Range(1,3);
             minigameOn = true;
             Debug.Log(randomInt);
             //play minigame, if player wins minigame, adds multiplier, if not, multiplier resets to 0.
@@ -84,10 +88,21 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (isInfected == true)
+        if (isInfected == true && isInfectedSound == false)
         {
+            isInfectedSound = true;
             infectedBubble.SetActive(true);
+            StartCoroutine(playRandomSound());
+
+
+
         }
+    }
+
+    IEnumerator playRandomSound()
+    {
+        yield return new WaitForSeconds(2);
+        SoundManager.instance.PlayRandomSoundFXClip(infectedSoundClips, transform, 1f);
     }
 
 }

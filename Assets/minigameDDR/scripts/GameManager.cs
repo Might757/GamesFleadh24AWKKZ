@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     [SerializeField] private GameObject nearestNpc;
     [SerializeField] private GameObject[] allNpcs;
+    [SerializeField] private GameObject bgAmbientObj;
     private NPCInteractable npc;
-
+    private AudioSource bgAmbient;
     float distance;
     float nearestDistance = 10000;
 
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        bgAmbientObj = GameObject.FindGameObjectWithTag("ambient");
+        bgAmbient = bgAmbientObj.GetComponent<AudioSource>();
         playerInteractUI = GameObject.FindGameObjectWithTag("InteractUI");
         infectedScoreUI = GameObject.FindGameObjectWithTag("Score");
         infectedScoreUI.SetActive(false);
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
                 player.SetActive(true);
                 infectedScoreUI.SetActive(true);
                 playerInteractUI.SetActive(true);
+                bgAmbient.Play();
                 npc.minigameOn = false;
             }
             else
@@ -130,6 +134,7 @@ public class GameManager : MonoBehaviour
                 player.SetActive(true);
                 infectedScoreUI.SetActive(true);
                 playerInteractUI.SetActive(true);
+                bgAmbient.Play();
                 npc.minigameOn = false;
             }
         }

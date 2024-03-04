@@ -14,6 +14,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mazeRunning = true;
         ScoreNum = 0;
         MyScoreText.text = "Cells infected : " + ScoreNum + "/6";
     }

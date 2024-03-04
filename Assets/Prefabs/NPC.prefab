@@ -84,11 +84,19 @@ MonoBehaviour:
   playerInteractUI: {fileID: 241179734645180455, guid: 505e61981f21218438f5c74a067f8015,
     type: 3}
   infectedBubble: {fileID: 5003069207529807919}
-  ddr: {fileID: 3009106893861576707, guid: 72a1864a8481d8b4d936d1217f54dac6, type: 3}
+  ddr: {fileID: 858387345256829774, guid: 01e6396af3cf5ed42959bd532cd3543f, type: 3}
   maze: {fileID: 472396184983610016, guid: 6cc3b4211c821b3428e159939c1d23b2, type: 3}
-  angryVirus: {fileID: 4076581005525886811, guid: fa02a10c14868c640818766eaa0f91cd,
+  angryVirus: {fileID: 8091817395972276218, guid: 2dfab1041ac0477428aec9b3aa1e5455,
     type: 3}
   infectedSkin: {fileID: 2100000, guid: 80c571a723e5b594e9bd210d23419840, type: 2}
+  infectedSoundClips:
+  - {fileID: 8300000, guid: 7db3b56212f1b184f9008baacb756a99, type: 3}
+  - {fileID: 8300000, guid: 53a3c24b6cc39454d80ec95e848f5fc4, type: 3}
+  - {fileID: 8300000, guid: d85673e89bdf19c45b9e4c193d86412c, type: 3}
+  - {fileID: 8300000, guid: fed0512223a9522408a4deeaf49cb7e4, type: 3}
+  - {fileID: 8300000, guid: 51fedc18de86bfe41b327f3014dea80e, type: 3}
+  - {fileID: 8300000, guid: 4916596f15b6d4a41b0e396ca23a5251, type: 3}
+  - {fileID: 8300000, guid: ceab73cdcd9a9b44f8ad36f838fc446f, type: 3}
   isStrong: 1
   isInfected: 0
   minigameOn: 0

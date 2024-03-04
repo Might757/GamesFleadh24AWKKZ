@@ -15,7 +15,9 @@ public class MazeController : MonoBehaviour
     private GameObject infectedScoreUI; // score of the main game
     [SerializeField] private GameObject MyScoreText; // score of maze
     [SerializeField] private GameObject countdownText; // timer
+    [SerializeField] private GameObject bgAmbientObj;
 
+    private AudioSource bgAmbient;
     private NPCInteractable npc;
     [SerializeField] private ScoreScript scoreObj;
     [SerializeField] private CountdownTimer countTime;
@@ -26,6 +28,8 @@ public class MazeController : MonoBehaviour
 
     private void Awake()
     {
+        bgAmbientObj = GameObject.FindGameObjectWithTag("ambient");
+        bgAmbient = bgAmbientObj.GetComponent<AudioSource>();
         playerInteractUI = GameObject.FindGameObjectWithTag("InteractUI");
         infectedScoreUI = GameObject.FindGameObjectWithTag("Score");
         infectedScoreUI.SetActive(false);
@@ -72,6 +76,7 @@ public class MazeController : MonoBehaviour
 
                 MyScoreText.SetActive(false);
                 countdownText.SetActive(false);
+                bgAmbient.Play();
                 npc.minigameOn = false;
             }
             else if ((ScoreScript.ScoreNum < 6 && CountdownTimer.currentTime == 0f) && npc.minigameOn)
@@ -88,6 +93,7 @@ public class MazeController : MonoBehaviour
 
                 MyScoreText.SetActive(false);
                 countdownText.SetActive(false);
+                bgAmbient.Play();
                 npc.minigameOn = false;
             }
         }

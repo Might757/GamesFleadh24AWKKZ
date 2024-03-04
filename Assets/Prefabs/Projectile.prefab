@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8639775621545263863}
   - component: {fileID: 8639775621545263862}
   - component: {fileID: 8639775621545263865}
-  - component: {fileID: 8639775621545263864}
+  - component: {fileID: 8382902241659524232}
+  - component: {fileID: 8422320964447457623}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: virus
@@ -121,7 +122,20 @@ CircleCollider2D:
   m_Offset: {x: -0.00534904, y: -0.0267452}
   serializedVersion: 2
   m_Radius: 0.182396
---- !u!50 &8639775621545263864
+--- !u!114 &8382902241659524232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639775621545263867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9bb11ecbadbb946889c563215225fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionSound: {fileID: 8300000, guid: b492efc677303254aa622ecc2a7897cb, type: 3}
+--- !u!50 &8422320964447457623
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
