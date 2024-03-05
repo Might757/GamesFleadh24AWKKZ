@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Level.unity
     guid: 1c7155f082bf0a44ab7e736980835abd
+  - enabled: 1
+    path: Assets/stuff by kacper/cutscene/Final Cuscene.unity
+    guid: 3eb6ab39415295f4688c79e204716307
   m_configObjects: {}

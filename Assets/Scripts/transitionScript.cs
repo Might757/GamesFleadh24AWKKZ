@@ -17,7 +17,7 @@ public class transitionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(manTalk.isPlaying == false)
+        if(manTalk.isPlaying == false || Input.GetKeyDown(KeyCode.E))
         {
             transAnim.SetBool("transitionPlay", true);
         }

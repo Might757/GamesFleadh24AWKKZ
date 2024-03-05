@@ -84,7 +84,7 @@ MonoBehaviour:
   playerInteractUI: {fileID: 241179734645180455, guid: 505e61981f21218438f5c74a067f8015,
     type: 3}
   infectedBubble: {fileID: 5003069207529807919}
-  ddr: {fileID: 858387345256829774, guid: 01e6396af3cf5ed42959bd532cd3543f, type: 3}
+  ddr: {fileID: 6106895022000567359, guid: 25d72d8978226634983d7f063d43be84, type: 3}
   maze: {fileID: 472396184983610016, guid: 6cc3b4211c821b3428e159939c1d23b2, type: 3}
   angryVirus: {fileID: 8091817395972276218, guid: 2dfab1041ac0477428aec9b3aa1e5455,
     type: 3}
@@ -97,6 +97,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 51fedc18de86bfe41b327f3014dea80e, type: 3}
   - {fileID: 8300000, guid: 4916596f15b6d4a41b0e396ca23a5251, type: 3}
   - {fileID: 8300000, guid: ceab73cdcd9a9b44f8ad36f838fc446f, type: 3}
+  bgAmbient: {fileID: 0}
   isStrong: 1
   isInfected: 0
   minigameOn: 0
