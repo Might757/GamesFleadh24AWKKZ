@@ -14,11 +14,14 @@ public class FinalSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            TryAgain();
+        }
     }
 
 
-    public  void TryAgain()
+    public void TryAgain()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);
     }

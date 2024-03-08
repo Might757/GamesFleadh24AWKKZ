@@ -23,7 +23,7 @@ public class PlayerInteract : MonoBehaviour
 
         }
 
-        if (infectedScore.Score >= 15f)
+        if (infectedScore.Score >= 15f || Input.GetKeyDown(KeyCode.F))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }

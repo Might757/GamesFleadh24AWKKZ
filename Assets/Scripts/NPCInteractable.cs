@@ -58,7 +58,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         else if (isInfected == false && isStrong == true && minigameOn == false)
         {
             bgAmbient.Pause();
-            randomInt = Random.Range(1,2);
+            randomInt = 1;// Random.Range(1,3);
             minigameOn = true;
             Debug.Log(randomInt);
             //play minigame, if player wins minigame, adds multiplier, if not, multiplier resets to 0.
