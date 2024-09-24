@@ -15,6 +15,7 @@ TagManager:
   - block
   - borderAngryVirus
   - ambient
+  - trampoline
   layers:
   - Default
   - TransparentFX
